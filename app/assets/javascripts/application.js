@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require maps
 //= require_tree .
+
+$(document).ready(function() {
+    var map = App.map({canvas: "#map"}).init();
+
+    $('[data-action=geolocate]').click(map.geolocateMe);
+});
