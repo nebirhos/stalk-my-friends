@@ -19,4 +19,8 @@ $(document).ready(function() {
     var map = App.map({canvas: "#map"}).init();
 
     $('[data-action=geolocate]').click(map.geolocateMe);
+
+    $('[data-action=cheat]').click(function() {
+        $.getJSON('/geocode/', {query: $('#address').val()}, map.cheat);
+    });
 });

@@ -18,4 +18,6 @@ gem 'jquery-rails'
 gem 'slim-rails'
 gem 'compass-rails'
 
+gem "geocoder"
+
 gem 'pg'
