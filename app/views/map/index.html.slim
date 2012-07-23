@@ -1,6 +1,6 @@
 p
   = "Hi #{@user.name}! Here is your last position: "
-  span#position = "(#{@user.latitude}, #{@user.longitude})"
+  span#position = "(#{@user.position.y}, #{@user.position.x})"
 
 button[data-action="geolocate"] Find my position!
 
@@ -8,8 +8,8 @@ input[type="text" id="address"]
 button[data-action="cheat"] Set my position
 
 = form_for @user, remote: true, html: {data: {action: "update_user", type: "json"}} do |f|
-  = f.hidden_field :latitude
-  = f.hidden_field :longitude
+  = f.hidden_field :latitude, :value => @user.position.y
+  = f.hidden_field :longitude, :value => @user.position.x
 
 div#map Loading...
 
