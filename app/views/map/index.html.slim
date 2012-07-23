@@ -1,10 +1,24 @@
 p
-  | Here is your position: 
-  span#position
+  = "Hi #{@user.name}! Here is your last position: "
+  span#position = "(#{@user.latitude}, #{@user.longitude})"
 
 button[data-action="geolocate"] Find my position!
 
 input[type="text" id="address"]
 button[data-action="cheat"] Set my position
 
+= form_for @user, remote: true, html: {data: {action: "update_user", type: "json"}} do |f|
+  = f.hidden_field :latitude
+  = f.hidden_field :longitude
+
 div#map Loading...
+
+div#friends
+  p
+    | Is anybody around me?
+    button[data-action="nearby_friends" data-radius="1"] Near 1km
+    button[data-action="nearby_friends" data-radius="5"] Near 5km
+    button[data-action="nearby_friends" data-radius="50"] Near 50 km
+    span.results
+
+  ul.list
