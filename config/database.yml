@@ -1,6 +1,7 @@
 development:
-  adapter: postgresql
+  adapter: postgis
   encoding: unicode
   database: stalk_my_friends
   pool: 5
   username: nebirhos
+  template: template_postgis

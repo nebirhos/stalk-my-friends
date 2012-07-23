@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update_attributes params[:user]
+    point = User.rgeo_factory_generator.point(params[:user][:longitude], params[:user][:latitude])
+    @user.update_attributes position: point
     respond_with @user
   end
 

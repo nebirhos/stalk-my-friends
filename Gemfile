@@ -21,3 +21,4 @@ gem 'compass-rails'
 gem "geocoder"
 
 gem 'pg'
+gem 'activerecord-postgis-adapter'

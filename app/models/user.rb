@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :address, :latitude, :longitude, :name
+  attr_accessible :address, :latitude, :longitude, :position, :name
 
-  geocoded_by :address
-  reverse_geocoded_by :latitude, :longitude
-  after_validation :reverse_geocode  # auto-fetch address
+  self.rgeo_factory_generator = RGeo::Geographic.simple_mercator_factory
+
+  def nearbys(radius)
+    radius = radius.to_i*1000
+    User.where( "ST_Distance(position, ?, false) <= ? ",
+                position, radius ).where("id <> ?", id)
+  end
 end
