@@ -1,3 +1,5 @@
 == Stalk My Friends
 
 Demo app for my geolocation talk @ florenceonruby 2012-07-24
+
+Slides available at http://www.slideshare.net/nebirhos/geolocation-on-rails
